@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Speisekarte</title>
+    <title>Speisekarte für Jawa</title>
 </head>
 <body onload="showWochenkarteAnhandVonKW()">
 <h1>Jawa Wochenkarte</h1>
