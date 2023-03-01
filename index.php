@@ -15,7 +15,17 @@
             height: 800px;
             flex: 1%;
             padding: 0px;
+            display: flex;
         }
+        
+        .column-left {
+            justify-content: flex-end;
+        }
+        
+        .column-right {
+            justify-content: flex-end;
+        }
+        
     </style>
 </head>
 <body align="center" onload="showWochenkarteAnhandVonKW()" style="background-color:antiquewhite">
@@ -29,10 +39,10 @@
 </p>
 
 <div class="row">
-    <div class="column">
+    <div class="column column-left">
         <img src="" id="WochenkarteId" alt="Beilagen" width="520" height="800">
     </div>
-    <div class="column">
+    <div class="column column-right"">
         <img src="Beilagen1-4.jpg" alt="Wochenkarte" width="520" height="=800">
     </div>
 </div>
