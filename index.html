@@ -42,12 +42,19 @@
     <div class="column column-left">
         <img src="" id="WochenkarteId" alt="Beilagen" width="520" height="800">
     </div>
-    <div class="column column-right"">
+    <div class="column column-right">
         <img src="Beilagen1-4.jpg" alt="Wochenkarte" width="520" height="=800">
     </div>
 </div>
 <script>
     function showWochenkarteAnhandVonKW() {
+
+        console.log(window.location.search)
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const kw = urlParams.get('kw');
+
         let menu = document.getElementById("menu");
 
         //Ermitteln der aktuellen Kalenderwoche
@@ -57,8 +64,15 @@
         var result = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
         //console.log(`The week number of the current date (${currentdate}) is ${result}.`);
 
+        if (kw != null) {
+            result = kw;
+        }
+
         //Ermitteln und ANzeigen der aktuellen Wochenkarte anhand der KW
         var mathStuff = (result % 4);
+        if (mathStuff == 0) {
+            mathStuff = 4;
+        }
         menu.innerHTML = `Wir befinden uns in der ${result}. Kalenderwoche. Die Wochenkarte müsste ${mathStuff}. Woche sein. Ohne Gewähr!`;
 
         //Bitte alle Images folgendermaßen bennenen: "Wochenkarte1", "Wochenkarte2" etc. So kann der Code auch tun, was er tun soll!
