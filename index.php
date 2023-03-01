@@ -23,7 +23,7 @@
         }
         
         .column-right {
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
         
     </style>
