@@ -58,6 +58,7 @@
         var currentWeek = moment().format('W');
         console.log('Current week:' + currentWeek);
 
+        //Logik um die Kalenderwoche entweder anhand des URL Parameters oder anhand der API auszuwählen
         var weekToUse;
         if (weekfromParameter != null) {
             weekToUse = weekfromParameter;
@@ -71,10 +72,12 @@
             menuNumber = 4;
         }
 
+        //Aktualisieren der Menüzeile im HTML, um die aktuelle Woche anzuzeigen
         let menu = document.getElementById("menu");
         menu.innerHTML = `Wir befinden uns in der ${weekToUse}. Kalenderwoche. Die Wochenkarte müsste ${menuNumber}. Woche sein. Ohne Gewähr!`;
 
-        //Bitte alle Images folgendermaßen bennenen: "Wochenkarte1", "Wochenkarte2" etc. So kann der Code auch tun, was er tun soll!
+        //Aktualisieren der Wochenkarte im HTML
+        //Bitte alle Images folgendermaßen bennenen: "menu1", "menu2" etc. So kann der Code auch tun, was er tun soll!
         document.getElementById("WochenkarteId").src = "menu" + menuNumber + ".jpg"
     }
 </script>
