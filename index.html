@@ -46,39 +46,37 @@
         <img src="Beilagen1-4.jpg" alt="Wochenkarte" width="520" height="=800">
     </div>
 </div>
+<script src="moment.min.js"></script>
 <script>
     function showWochenkarteAnhandVonKW() {
-
-        console.log(window.location.search)
-
+        // Get kw from url param
         const urlParams = new URLSearchParams(window.location.search);
+        const weekfromParameter = urlParams.get('kw');
+        console.log('Week from parameter:' + weekfromParameter);
 
-        const kw = urlParams.get('kw');
+        // Get current week from moment
+        var currentWeek = moment().format('W');
+        console.log('Current week:' + currentWeek);
+
+        var weekToUse;
+        if (weekfromParameter != null) {
+            weekToUse = weekfromParameter;
+        } else {
+            weekToUse = currentWeek;
+        }
+
+        //Ermitteln und Anzeigen der aktuellen Wochenkarte anhand der KW
+        var menuNumber = (weekToUse % 4);
+        if (menuNumber == 0) {
+            menuNumber = 4;
+        }
 
         let menu = document.getElementById("menu");
-
-        //Ermitteln der aktuellen Kalenderwoche
-        currentdate = new Date();
-        var oneJan = new Date(currentdate.getFullYear(), 0, 1);
-        var numberOfDays = Math.floor((currentdate - oneJan) / (24 * 60 * 60 * 1000));
-        var result = Math.ceil((currentdate.getDay() + 1 + numberOfDays) / 7);
-        //console.log(`The week number of the current date (${currentdate}) is ${result}.`);
-
-        if (kw != null) {
-            result = kw;
-        }
-
-        //Ermitteln und ANzeigen der aktuellen Wochenkarte anhand der KW
-        var mathStuff = (result % 4);
-        if (mathStuff == 0) {
-            mathStuff = 4;
-        }
-        menu.innerHTML = `Wir befinden uns in der ${result}. Kalenderwoche. Die Wochenkarte müsste ${mathStuff}. Woche sein. Ohne Gewähr!`;
+        menu.innerHTML = `Wir befinden uns in der ${weekToUse}. Kalenderwoche. Die Wochenkarte müsste ${menuNumber}. Woche sein. Ohne Gewähr!`;
 
         //Bitte alle Images folgendermaßen bennenen: "Wochenkarte1", "Wochenkarte2" etc. So kann der Code auch tun, was er tun soll!
-        document.getElementById("WochenkarteId").src = "menu" + mathStuff + ".jpg"
+        document.getElementById("WochenkarteId").src = "menu" + menuNumber + ".jpg"
     }
-
 </script>
 </body>
 </html>
